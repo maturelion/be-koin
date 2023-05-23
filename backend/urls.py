@@ -21,11 +21,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
 from users.views import UserViewSet
-from wallets.views import WalletViewSet
+from wallets.views import WalletViewSet, CurrencyViewSet, CurrencyBalanceViewSet
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet, basename="user")
 router.register(r"wallets", WalletViewSet, basename="wallet")
+router.register(r"currencies", CurrencyViewSet, basename="currency")
+router.register(r"currency-balances", CurrencyBalanceViewSet, basename="currency-balance")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
