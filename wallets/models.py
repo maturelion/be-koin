@@ -38,6 +38,7 @@ class CurrencyBalance(models.Model):
 
     class Meta:
         unique_together = ('wallet', 'currency')
+        ordering = ["-balance"]
 
     def __str__(self):
         return f"{self.currency.symbol} balance: {self.balance}"

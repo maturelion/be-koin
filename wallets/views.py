@@ -40,12 +40,7 @@ class WalletViewSet(viewsets.ModelViewSet):
 class CurrencyBalanceViewSet(viewsets.ModelViewSet):
     queryset = CurrencyBalance.objects.all()
     serializer_class = CurrencyBalanceSerializer
-    permission_classes = [IsOwnerOrAdminOrReadOnly]
+    # permission_classes = [IsOwnerOrAdminOrReadOnly]
     lookup_field = "id"
     filterset_fields = ('wallet',)
     http_method_names = ["get"]
-
-    def get_object(self):
-        queryset = self.filter_queryset(self.get_queryset())
-        obj = queryset.get(user=self.request.user)
-        return obj
