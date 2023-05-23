@@ -5,7 +5,7 @@ from .models import Wallet, Currency, CurrencyBalance
 class CurrencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Currency
-        fields = ["id", "name", "symbol"]
+        fields = ["id", "name", "icon", "symbol"]
         extra_kwargs = {
             "url": {"view_name": "currency-detail", "lookup_field": "id"}
         }

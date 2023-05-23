@@ -20,6 +20,7 @@ def create_user_wallet(sender, instance, created, **kwargs):
 class Currency(models.Model):
     name = models.CharField(max_length=50)
     symbol = models.CharField(max_length=10)
+    icon = models.CharField(max_length=150)
 
     def __str__(self):
         return self.name
