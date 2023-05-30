@@ -36,6 +36,7 @@ class CurrencyBalance(models.Model):
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=12, decimal_places=2)
+    show_pending = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('wallet', 'currency')

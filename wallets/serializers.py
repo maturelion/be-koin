@@ -22,7 +22,7 @@ class CurrencyBalanceSerializer(serializers.ModelSerializer):
     currency_set = CurrencySerializer(read_only=True, source="currency")
     class Meta:
         model = CurrencyBalance
-        fields = ["id", "wallet", "currency", "currency_set", "balance"]
+        fields = ["id", "wallet", "currency", "currency_set", "balance", "show_pending"]
         extra_kwargs = {
             "url": {"view_name": "curency-balance-detail", "lookup_field": "id"}
         }

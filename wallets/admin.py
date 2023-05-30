@@ -19,6 +19,7 @@ class CurrencyBalanceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         "wallet",
         "currency",
         "balance",
+        "show_pending",
     ]
 
 
