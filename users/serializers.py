@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
+            "percentage",
             "is_staff",
             "is_active",
             "last_login",
@@ -21,6 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = [
             "is_staff",
+            "percentage",
             "is_active",
             "last_login",
             "date_joined",

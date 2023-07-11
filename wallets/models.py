@@ -15,7 +15,12 @@ def create_user_wallet(sender, instance, created, **kwargs):
 
         # Create currency balances for each currency
         for currency in currencies:
-            CurrencyBalance.objects.create(wallet=wallet, currency=currency, balance=0.0)
+            CurrencyBalance.objects.create(
+                wallet=wallet,
+                currency=currency,
+                balance=0.0
+            )
+
 
 class Currency(models.Model):
     name = models.CharField(max_length=50)
@@ -25,12 +30,14 @@ class Currency(models.Model):
     def __str__(self):
         return self.name
 
+
 class Wallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     currencies = models.ManyToManyField(Currency, through='CurrencyBalance')
 
     def __str__(self):
         return f"{self.user.username}'s Wallet"
+
 
 class CurrencyBalance(models.Model):
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
