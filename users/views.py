@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import slugify
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -6,9 +5,12 @@ from .models import User
 from .serializers import UserSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import BasePermission
+
+
 class IsOwnerOrAdminOrReadOnly(BasePermission):
     """
-    Custom permission to only allow owners of an object or admin to view/edit it,
+    Custom permission to only allow owners of
+    an object or admin to view/edit it,
     but deny non-admin users from seeing the list of objects.
     """
 
@@ -19,7 +21,6 @@ class IsOwnerOrAdminOrReadOnly(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user or request.user.is_staff
-
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -43,7 +44,10 @@ class UserViewSet(viewsets.ModelViewSet):
         fields = user_object._meta.fields
         for field in fields:
             field = field.name.split(".")[-1]  # to get column name
-            exec("user_object.%s = data.get(field, user_object.%s)" % (field, field))
+            exec(
+                "user_object.%s=data.get(field, user_object.%s)" %
+                (field, field)
+            )
 
         serializer_context = {
             "request": request,

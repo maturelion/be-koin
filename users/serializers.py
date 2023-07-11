@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import User
 
+
 class UserSerializer(serializers.ModelSerializer):
     # referral = ReferralSerializer(source="user_referral", required=False)
 
@@ -26,5 +27,10 @@ class UserSerializer(serializers.ModelSerializer):
             "is_active",
             "last_login",
             "date_joined",
-        ]    
-        extra_kwargs = {"url": {"view_name": "user-detail", "lookup_field": "slug"}}
+        ]
+        extra_kwargs = {
+            "url": {
+                "view_name": "user-detail",
+                "lookup_field": "slug"
+            }
+        }

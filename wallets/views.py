@@ -1,11 +1,17 @@
 from rest_framework import viewsets
 from .models import Wallet, Currency, CurrencyBalance
-from .serializers import WalletSerializer, CurrencySerializer, CurrencyBalanceSerializer
+from .serializers import (
+    WalletSerializer,
+    CurrencySerializer,
+    CurrencyBalanceSerializer
+)
 from rest_framework.permissions import BasePermission
+
 
 class IsOwnerOrAdminOrReadOnly(BasePermission):
     """
-    Custom permission to only allow owners of an object or admin to view/edit it,
+    Custom permission to only allow owners of
+    an object or admin to view/edit it,
     but deny non-admin users from seeing the list of objects.
     """
 
@@ -17,12 +23,14 @@ class IsOwnerOrAdminOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user or request.user.is_staff
 
+
 class CurrencyViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly]
     lookup_field = "id"
     http_method_names = ["get"]
+
 
 class WalletViewSet(viewsets.ModelViewSet):
     queryset = Wallet.objects.all()
@@ -36,6 +44,7 @@ class WalletViewSet(viewsets.ModelViewSet):
         queryset = self.filter_queryset(self.get_queryset())
         obj = queryset.get(user=self.request.user)
         return obj
+
 
 class CurrencyBalanceViewSet(viewsets.ModelViewSet):
     queryset = CurrencyBalance.objects.all()

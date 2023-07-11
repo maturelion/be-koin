@@ -10,6 +10,7 @@ class CurrencySerializer(serializers.ModelSerializer):
             "url": {"view_name": "currency-detail", "lookup_field": "id"}
         }
 
+
 class WalletSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wallet
@@ -18,11 +19,24 @@ class WalletSerializer(serializers.ModelSerializer):
             "url": {"view_name": "wallet-detail", "lookup_field": "user"}
         }
 
+
 class CurrencyBalanceSerializer(serializers.ModelSerializer):
     currency_set = CurrencySerializer(read_only=True, source="currency")
+
     class Meta:
         model = CurrencyBalance
-        fields = ["id", "wallet", "currency", "currency_set", "balance", "show_pending"]
+        fields = [
+            "id",
+            "wallet",
+            "currency",
+            "currency_set",
+            "balance",
+            "show_pending"
+        ]
         extra_kwargs = {
-            "url": {"view_name": "curency-balance-detail", "lookup_field": "id"}
+            "url":
+                {
+                    "view_name": "curency-balance-detail",
+                    "lookup_field": "id"
+                }
         }
