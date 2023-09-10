@@ -20,7 +20,8 @@ class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
         "username",
         "slug",
         "email",
-        "percentage",
+        "crypto_percentage",
+        "transfer_percentage",
         "date_joined",
         "last_login",
     )
@@ -35,7 +36,8 @@ class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
                     "username",
                     "first_name",
                     "last_name",
-                    "percentage",
+                    "crypto_percentage",
+                    "transfer_percentage",
                     "password",
                 )
             },
