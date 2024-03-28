@@ -1,4 +1,3 @@
-from django.utils.crypto import get_random_string
 from django.template.defaultfilters import slugify
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -73,9 +72,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.username
 
     def save(self, *args, **kwargs):
-        chars = "abcdefghijklmnopqrstuvwxyz"
         if not self.slug:
             self.slug = slugify(self.username)
 
         super(User, self).save(*args, **kwargs)
-
