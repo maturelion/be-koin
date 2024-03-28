@@ -7,10 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
     model = User
     date_hierarchy = "date_joined"
-    search_fields = (
-        "email",
-        "username"
-    )
+    search_fields = ("email", "username")
     list_filter = (
         "is_active",
         "is_staff",
@@ -22,7 +19,6 @@ class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
         "email",
         "crypto_percentage",
         "transfer_percentage",
-        "user_message",
         "date_joined",
         "last_login",
     )
@@ -39,7 +35,8 @@ class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
                     "last_name",
                     "crypto_percentage",
                     "transfer_percentage",
-                    "user_message",
+                    "user_send_message",
+                    "user_transfer_message",
                     "password",
                 )
             },
