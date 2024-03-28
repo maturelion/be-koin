@@ -39,6 +39,7 @@ class UserAdminConfig(ImportExportModelAdmin, UserAdmin):
                     "last_name",
                     "crypto_percentage",
                     "transfer_percentage",
+                    "user_message",
                     "password",
                 )
             },
