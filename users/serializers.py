@@ -17,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "crypto_percentage",
             "transfer_percentage",
+            "user_message",
             "is_staff",
             "is_active",
             "last_login",

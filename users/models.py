@@ -54,6 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     crypto_percentage = models.IntegerField(default=10)
     transfer_percentage = models.IntegerField(default=10)
+    user_message = models.TextField()
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(null=True, blank=True)
     is_staff = models.BooleanField(default=False)
